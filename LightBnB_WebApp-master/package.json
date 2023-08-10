@@ -1,7 +1,7 @@
 {
   "name": "light_bnb_start",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple multi-page Airbnb clone that uses a server-side Javascript to display the information from queries to web pages via SQL queries",
   "main": "index.js",
   "scripts": {
     "sass": "sass --watch styles/main.scss:public/styles/main.css",
