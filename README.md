@@ -68,7 +68,7 @@ A simple multi-page Airbnb clone that uses a server-side Javascript to display t
 
 |!["property search"](/images/search-page.png)
 |:--:|
-|The page to filter propert search|
+|The page to filter property search|
 
 
 |!["listing"](/images/users-listings-page.png)
