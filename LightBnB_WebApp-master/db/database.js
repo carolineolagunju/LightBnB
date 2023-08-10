@@ -8,21 +8,16 @@ const pool = new Pool({
 });
 
 
-/// Users
 
-/**
- * Get a single user from the database given their email.
- * @param {String} email The email of the user.
- * @return {Promise<{}>} A promise to the user.
- */
+///users
 
-
+//Get a single user from the database given their email.
 const getUserWithEmail = function(email) {
   return pool
-  //using parameterized query to avoid SQL injection
+    //using parameterized query to avoid SQL injection
     .query(`SELECT * FROM users WHERE email = $1`, [email])
     .then((result) => {
-    //checking if the provided email does not exist in the db
+      //checking if the provided email does not exist in the db
       if (result.rows.length === 0) {
         return null;
       }
@@ -34,18 +29,13 @@ const getUserWithEmail = function(email) {
 };
 
 
-/**
- * Get a single user from the database given their id.
- * @param {string} id The id of the user.
- * @return {Promise<{}>} A promise to the user.
- */
 
-
+//Get a single user from the database given their id.
 const getUserWithId = function(id) {
   return pool
     .query(`SELECT * FROM users where id = $1`, [id])
     .then((result) => {
-    //checking if the user id does not exist
+      //checking if the user id does not exist
       if (result.rows.length === 0) {
         return null;
       }
@@ -56,16 +46,12 @@ const getUserWithId = function(id) {
     });
 };
 
-/**
- * Add a new user to the database.
- * @param {{name: string, password: string, email: string}} user
- * @return {Promise<{}>} A promise to the user.
- */
 
 
+//Add a new user to the database.
 const addUser = function(user) {
   return pool
-  //query to add new user and return the user object
+    //query to add new user and return the user object
     .query(`INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING *`, [user.name, user.email, user.password])
     .then((result) => {
       return result.rows[0];
@@ -75,15 +61,11 @@ const addUser = function(user) {
     });
 };
 
+
+
 /// Reservations
 
-/**
- * Get all reservations for a single user.
- * @param {string} guest_id The id of the user.
- * @return {Promise<[{}]>} A promise to the reservations.
- */
-
-
+//Get all reservations for a single user.
 const getAllReservations = function(guest_id, limit = 10) {
   return pool
     .query(`SELECT reservations.*, properties.*, avg(property_reviews.rating) as average_rating
@@ -106,12 +88,7 @@ const getAllReservations = function(guest_id, limit = 10) {
 
 /// Properties
 
-/**
- * Get all properties.
- * @param {{}} options An object containing query options.
- * @param {*} limit The number of results to return.
- * @return {Promise<[{}]>}  A promise to the properties.
- */
+//Get all properties
 
 const getAllProperties = (options, limit = 10) => {
   const queryParams = [];
@@ -167,18 +144,14 @@ const getAllProperties = (options, limit = 10) => {
   return pool.query(queryString, queryParams).then((res) => {
     return res.rows;
   })
-  .catch((err) => {
-    console.log(err.message);
-  });
+    .catch((err) => {
+      console.log(err.message);
+    });
 };
 
 
 
-/**
- * Add a property to the database
- * @param {{}} property An object containing all of the property details.
- * @return {Promise<{}>} A promise to the property.
- */
+//Add a property to the database
 
 const addProperty = function(property) {
   return pool
