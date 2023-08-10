@@ -1,4 +1,5 @@
 # LightBnB
+A simple multi-page Airbnb clone that uses a server-side Javascript to display the information from queries to web pages via SQL queries
 
 ## Project Structure
 
@@ -53,3 +54,33 @@
 * `routes` contains the router files which are responsible for any HTTP requests to `/users/something` or `/api/something`. 
 * `styles` contains all of the sass files. 
 * `server.js` is the entry point to the application. This connects the routes to the database.
+
+## Final Product Screenshots
+|!["login"](/images/user-login-page.png)
+|:--:|
+|Screenshot of the user login page|
+
+
+|!["sign Up"](/images/user-signup-page.png)
+|:--:|
+|Sign Up page|
+
+
+|!["property search"](/images/search-page.png)
+|:--:|
+|The page to filter propert search|
+
+
+|!["listing"](/images/users-listings-page.png)
+|:--:|
+|Users listings|
+
+
+|!["new property"](/images/page-to-create-new-property.png)
+|:--:|
+|page to create new property for listing|
+
+
+|!["reservation"](/images/reservation.png)
+|:--:|
+|list of users reservations|

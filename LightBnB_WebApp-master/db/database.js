@@ -1,6 +1,3 @@
-const properties = require("./json/properties.json");
-const users = require("./json/users.json");
-
 const { Pool } = require('pg');
 //object that connects to the lighbnb database
 const pool = new Pool({
@@ -169,6 +166,9 @@ const getAllProperties = (options, limit = 10) => {
   // Execute the query using the database connection pool and return the result rows
   return pool.query(queryString, queryParams).then((res) => {
     return res.rows;
+  })
+  .catch((err) => {
+    console.log(err.message);
   });
 };
 
